@@ -6,3 +6,9 @@ class Hello {
         return "World!"
     }
 }
+
+open class HelloService {
+    open fun sayGreeting(): String {
+        return Hello().greet()
+    }
+}
