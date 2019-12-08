@@ -1,10 +1,10 @@
 package be.swsb.coderetreat
 
-import assertk.assertThat
-import assertk.assertions.isEqualTo
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
-import org.junit.Test
+import io.mockk.every
+import io.mockk.mockk
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
+
 
 class HelloTest {
 
@@ -21,8 +21,8 @@ class HelloTest {
 
     @Test
     fun sayGreeting_WithMock_ShouldReturnMockedGreeting() {
-        val helloMock = mock<HelloService>()
-        whenever(helloMock.sayGreeting()).thenReturn("Snarf!")
+        val helloMock = mockk<HelloService>()
+        every { helloMock.sayGreeting() } returns "Snarf!"
         assertThat(helloMock.sayGreeting()).isEqualTo("Snarf!")
     }
 }
